@@ -5,12 +5,11 @@ namespace FinancesWPF.Entities
 {
     public class Movement
     {
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public decimal Value { get; set; }
-        public string Description { get; set; }
-        public MovementType Type { get; set; }
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public virtual int Id { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual decimal Value { get; set; }
+        public virtual string Description { get; set; }
+        public virtual MovementType Type { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

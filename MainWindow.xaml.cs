@@ -1,31 +1,37 @@
 ﻿using FinancesWPF.Controllers;
 using FinancesWPF.DTO.Category;
+using FinancesWPF.DTO.Movement;
 using System.Windows;
 using Unity;
 
 namespace FinancesWPF
 {
-    /// <summary>
-    /// Interação lógica para MainWindow.xam
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private CategoryController controller;
-        
+        private IUnityContainer container;
+        private CategoryController categoryController;
+        private MovementController movementController;
+
         public MainWindow()
         {
             InitializeComponent();
 
+            container = UnityConfig.GetContainer();
+            categoryController = container.Resolve<CategoryController>();
+            movementController = container.Resolve<MovementController>();
 
-            controller = UnityConfig.GetInstance().Resolve<CategoryController>();
-
-            controller.Create(new CreateCategoryDTO
+            var createdCategory = categoryController.Create(new CreateCategoryDTO
             {
                 Name= "Category",
             });
 
+
+            movementController.AddMovement(new CreateMovementDTO
+            {
+                Description = "teste",
+                CategoryId= createdCategory.Id,
+            });
         }
-
-
     }
 }
+

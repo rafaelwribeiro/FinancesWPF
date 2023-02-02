@@ -17,7 +17,7 @@ namespace FinancesWPF
     public static class UnityConfig
     {
         private static IUnityContainer _container = null;
-        public static IUnityContainer GetInstance()
+        public static IUnityContainer GetContainer()
             => _container == null ? ConfigureUnity() : _container;
 
         private static IUnityContainer ConfigureUnity()
@@ -37,7 +37,10 @@ namespace FinancesWPF
         {
             var cfg = Fluently.Configure()
                 .Database(SQLiteConfiguration.Standard.UsingFile("finances.db"))
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CategoryMap>())
+                .Mappings(m => {
+                    m.FluentMappings.AddFromAssemblyOf<CategoryMap>();
+                    m.FluentMappings.AddFromAssemblyOf<MovementMap>();
+                })
                 .BuildConfiguration();
 
             var schemaExport = new SchemaExport(cfg);
