@@ -115,7 +115,7 @@
     <Compile Include="DTO\Category\ReadCategoryDTO.cs" />
     <Compile Include="Mapping\CategoryMap.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
-    <Compile Include="Repositories\ICategoryRespository.cs" />
+    <Compile Include="Repositories\IRespository.cs" />
     <Compile Include="Types\MovementType.cs" />
     <Compile Include="UnityConfig.cs" />
     <Page Include="MainWindow.xaml">

@@ -6,14 +6,16 @@ using System.Linq;
 
 namespace FinancesWPF.Repositories
 {
-    public class CategoryRepository : IRepository<Category>
+    public class MovementRepository : IRepository<Movement>
     {
         private readonly ISession _session;
 
-        public CategoryRepository(ISession session) =>
+        public MovementRepository(ISession session)
+        {
             _session = session;
+        }
 
-        public Category Create(Category entity)
+        public Movement Create(Movement entity)
         {
             ITransaction transaction = null;
             try
@@ -22,7 +24,7 @@ namespace FinancesWPF.Repositories
                 _session.Save(entity);
                 transaction.Commit();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 transaction.Rollback();
                 throw ex;
@@ -41,7 +43,7 @@ namespace FinancesWPF.Repositories
             try
             {
                 transaction = _session.BeginTransaction();
-                var category =  _session.Get<Category>(id);
+                var category = _session.Get<Category>(id);
                 _session.Delete(category);
                 transaction.Commit();
             }
@@ -56,13 +58,13 @@ namespace FinancesWPF.Repositories
             }
         }
 
-        public Category Get(int id)
-            => _session.Get<Category>(id);
+        public Movement Get(int id)
+            => _session.Get<Movement>(id);
 
-        public IEnumerable<Category> GetAll()
-            => _session.Query<Category>().ToList();
+        public IEnumerable<Movement> GetAll()
+            => _session.Query<Movement>().ToList();
 
-        public void Update(Category entity)
+        public void Update(Movement entity)
         {
             ITransaction transaction = null;
             try

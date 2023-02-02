@@ -7,9 +7,9 @@ namespace FinancesWPF.Controllers
 {
     public class CategoryController
     {
-        private readonly ICategoryRespository _categoryRepository;
+        private readonly IRepository<Category> _categoryRepository;
 
-        public CategoryController(ICategoryRespository categoryRepository)
+        public CategoryController(IRepository<Category> categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }

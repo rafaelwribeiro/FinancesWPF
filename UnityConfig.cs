@@ -1,4 +1,5 @@
-﻿using FinancesWPF.Mapping;
+﻿using FinancesWPF.Entities;
+using FinancesWPF.Mapping;
 using FinancesWPF.Repositories;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -46,7 +47,8 @@ namespace FinancesWPF
             container.RegisterInstance(sessionFactory);
             container.RegisterInstance(sessionFactory.OpenSession());
 
-            container.RegisterType<ICategoryRespository, CategoryRepository>();
+            container.RegisterType<IRepository<Category>, CategoryRepository>();
+            container.RegisterType<IRepository<Movement>, MovementRepository>();
         }
 
     }
