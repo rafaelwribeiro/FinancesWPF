@@ -14,7 +14,7 @@ namespace FinancesWPF.Mapping
             Map(x => x.Date);
             Map(x => x.Value);
             Map(x => x.Description);
-            Map(x => x.Type).CustomType<NHibernate.Type.EnumCharType<MovementType>>();
+            Map(x => x.Type).CustomType<int>();
             References(x => x.Category)
             .Column("CategoryId")
             .ForeignKey("FK_Movement_Category")
