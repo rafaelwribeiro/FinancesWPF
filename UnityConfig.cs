@@ -1,6 +1,7 @@
 ﻿using FinancesWPF.Mapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using NHibernate.Tool.hbm2ddl;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -14,7 +15,10 @@ namespace FinancesWPF
     public static class UnityConfig
     {
         private static IUnityContainer _container = null;
-        public static IUnityContainer ConfigureUnity()
+        public static IUnityContainer GetInstance()
+            => _container == null ? ConfigureUnity() : _container;
+
+        private static IUnityContainer ConfigureUnity()
         {
             if (_container != null) return _container;
 
@@ -25,15 +29,17 @@ namespace FinancesWPF
             return _container;
         }
 
-        public static IUnityContainer GetInstance()
-            => _container == null ? ConfigureUnity() : _container;
 
-        public static void RegisterTypes(IUnityContainer container)
+
+        private static void RegisterTypes(IUnityContainer container)
         {
             var cfg = Fluently.Configure()
                 .Database(SQLiteConfiguration.Standard.UsingFile("finances.db"))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CategoryMap>())
                 .BuildConfiguration();
+
+            var schemaExport = new SchemaExport(cfg);
+            schemaExport.Create(false, true);
 
             var sessionFactory = cfg.BuildSessionFactory();
             container.RegisterInstance(sessionFactory);

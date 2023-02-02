@@ -19,7 +19,7 @@ namespace FinancesWPF.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public async Task Create(CreateCategoryDTO dto)
+        public void Create(CreateCategoryDTO dto)
         {
             var category = dto.Adapt<Category>();
             var createdCategory = _categoryRepository.Create(category);
