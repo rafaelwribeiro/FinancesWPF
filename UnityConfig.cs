@@ -1,4 +1,5 @@
 ﻿using FinancesWPF.Mapping;
+using FinancesWPF.Repositories;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate.Tool.hbm2ddl;
@@ -44,6 +45,8 @@ namespace FinancesWPF
             var sessionFactory = cfg.BuildSessionFactory();
             container.RegisterInstance(sessionFactory);
             container.RegisterInstance(sessionFactory.OpenSession());
+
+            container.RegisterType<ICategoryRespository, CategoryRepository>();
         }
 
     }

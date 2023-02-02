@@ -112,6 +112,7 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="DTO\Category\CreateCategoryDTO.cs" />
+    <Compile Include="DTO\Category\ReadCategoryDTO.cs" />
     <Compile Include="Mapping\CategoryMap.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ICategoryRespository.cs" />
