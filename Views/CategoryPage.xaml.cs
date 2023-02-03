@@ -52,8 +52,7 @@ namespace FinancesWPF.Views
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var data = GetRowDataContext(sender, e);
-
+            var data = GetRowDataContext(sender);
             int id = data.Id;
             ExecuteDeleteMethod(id);
         }
@@ -64,7 +63,7 @@ namespace FinancesWPF.Views
             LoadData();
         }
 
-        public ReadCategoryDTO GetRowDataContext(object sender, RoutedEventArgs e)
+        public ReadCategoryDTO GetRowDataContext(object sender)
         {
             Button button = sender as Button;
             if (button == null) return null;
@@ -78,7 +77,7 @@ namespace FinancesWPF.Views
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var data = GetRowDataContext(sender, e);
+            var data = GetRowDataContext(sender);
             int id = data.Id;
             NavigationService.Navigate(new CategoryFormPage(data));
         }

@@ -38,7 +38,7 @@ namespace FinancesWPF
             });
 
 
-            movementController.AddMovement(new CreateMovementDTO
+            movementController.Create(new CreateMovementDTO
             {
                 Description = "teste",
                 CategoryId = createdCategory.Id,

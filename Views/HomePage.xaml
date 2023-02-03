@@ -8,8 +8,53 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
-    
-    <Grid>
-        <TextBlock>Movimentos</TextBlock>
+
+    <Grid MaxWidth="850">
+        <StackPanel>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Movimentos" FontWeight="Bold" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="20">
+                <Button Content="Novo" Width="183" Click="Novo_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3">
+
+                <DataGrid
+                        x:Name="dataGrid" 
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        Width="800"
+                        Height="400"
+                    >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Data" Binding="{Binding Date}" />
+                        <DataGridTextColumn Header="Valor" Binding="{Binding Value}" />
+                        <DataGridTextColumn Header="Descrição" Binding="{Binding Description}" Width="*" />
+                        <DataGridTextColumn Header="Operacao" Binding="{Binding Type}" />
+
+                        <DataGridTemplateColumn Header="">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Excluir" Click="DeleteButton_Click" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Editar" Click="EditButton_Click" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Page>

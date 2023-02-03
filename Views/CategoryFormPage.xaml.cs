@@ -22,6 +22,7 @@ namespace FinancesWPF.Views
             Setup();
         }
 
+
         public CategoryFormPage(ReadCategoryDTO data)
         {
             InitializeComponent();

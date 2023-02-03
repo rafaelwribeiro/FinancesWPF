@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinancesWPF"
         mc:Ignorable="d"
-        Title="Finanças pessoais" Height="450" Width="800" Loaded="Window_Loaded"
-        WindowState="Maximized">
+        Title="Finanças pessoais" Loaded="Window_Loaded"
+        ResizeMode="NoResize"
+        Height="600"
+        Width="900"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Horizontal" Background="DarkGray" VerticalAlignment="Top">
             <Button Content="Movimentos" Margin="5" Background="Transparent" Foreground="White" Command="ApplicationCommands.Open" CommandParameter="Home"/>

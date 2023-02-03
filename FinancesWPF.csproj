@@ -117,6 +117,7 @@
     <Compile Include="DTO\Category\UpdateCategoryDTO.cs" />
     <Compile Include="DTO\Movement\CreateMovementDTO.cs" />
     <Compile Include="DTO\Movement\ReadMovementDTO.cs" />
+    <Compile Include="DTO\Movement\UpdateMovementDTO.cs" />
     <Compile Include="Mapping\CategoryMap.cs" />
     <Compile Include="Mapping\MovementMap.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
@@ -134,6 +135,9 @@
     </Compile>
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MovementFormPage.xaml.cs">
+      <DependentUpon>MovementFormPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MovementFormPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

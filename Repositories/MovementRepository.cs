@@ -43,8 +43,8 @@ namespace FinancesWPF.Repositories
             try
             {
                 transaction = _session.BeginTransaction();
-                var category = _session.Get<Category>(id);
-                _session.Delete(category);
+                var movement = _session.Get<Movement>(id);
+                _session.Delete(movement);
                 transaction.Commit();
             }
             catch (Exception ex)
@@ -70,7 +70,7 @@ namespace FinancesWPF.Repositories
             try
             {
                 transaction = _session.BeginTransaction();
-                _session.Delete(entity);
+                _session.Update(entity);
                 transaction.Commit();
             }
             catch (Exception ex)
