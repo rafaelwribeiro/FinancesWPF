@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -46,11 +47,40 @@ namespace FinancesWPF.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var createdCategory = categoryController.Create(new CreateCategoryDTO
-            {
-                Name = "Category",
-            });
+            NavigationService.Navigate(new CategoryFormPage());
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var data = GetRowDataContext(sender, e);
+
+            int id = data.Id;
+            ExecuteDeleteMethod(id);
+        }
+
+        private void ExecuteDeleteMethod(int id)
+        {
+            categoryController.Delete(id);
             LoadData();
+        }
+
+        public ReadCategoryDTO GetRowDataContext(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button == null) return null;
+
+            DataGridRow row = DataGridRow.GetRowContainingElement(button);
+            if (row == null) return null;
+
+            ReadCategoryDTO data = row.DataContext as ReadCategoryDTO;
+            return data;
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            var data = GetRowDataContext(sender, e);
+            int id = data.Id;
+            NavigationService.Navigate(new CategoryFormPage(data));
         }
     }
 }

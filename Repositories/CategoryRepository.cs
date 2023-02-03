@@ -68,7 +68,7 @@ namespace FinancesWPF.Repositories
             try
             {
                 transaction = _session.BeginTransaction();
-                _session.Delete(entity);
+                _session.Update(entity);
                 transaction.Commit();
             }
             catch (Exception ex)

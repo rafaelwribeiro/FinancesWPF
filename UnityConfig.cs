@@ -1,6 +1,7 @@
 ﻿using FinancesWPF.Entities;
 using FinancesWPF.Mapping;
 using FinancesWPF.Repositories;
+using FinancesWPF.Validators;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate.Tool.hbm2ddl;
@@ -56,6 +57,7 @@ namespace FinancesWPF
 
             container.RegisterType<IRepository<Category>, CategoryRepository>();
             container.RegisterType<IRepository<Movement>, MovementRepository>();
+            container.RegisterType<ICustomValidator, CustomValidator>();
         }
 
     }

@@ -114,6 +114,7 @@
     <Compile Include="Controllers\MovementController.cs" />
     <Compile Include="DTO\Category\CreateCategoryDTO.cs" />
     <Compile Include="DTO\Category\ReadCategoryDTO.cs" />
+    <Compile Include="DTO\Category\UpdateCategoryDTO.cs" />
     <Compile Include="DTO\Movement\CreateMovementDTO.cs" />
     <Compile Include="DTO\Movement\ReadMovementDTO.cs" />
     <Compile Include="Mapping\CategoryMap.cs" />
@@ -123,6 +124,11 @@
     <Compile Include="Repositories\MovementRepository.cs" />
     <Compile Include="Types\MovementType.cs" />
     <Compile Include="UnityConfig.cs" />
+    <Compile Include="Validators\ICustomValidator.cs" />
+    <Compile Include="Validators\CustomValidator.cs" />
+    <Compile Include="Views\CategoryFormPage.xaml.cs">
+      <DependentUpon>CategoryFormPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
@@ -143,6 +149,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CategoryFormPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
