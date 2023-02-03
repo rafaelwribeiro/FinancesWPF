@@ -31,7 +31,10 @@ namespace FinancesWPF
             return _container;
         }
 
-
+        public static T Resolve<T>()
+        {
+            return GetContainer().Resolve<T>();
+        }
 
         private static void RegisterTypes(IUnityContainer container)
         {
@@ -42,6 +45,7 @@ namespace FinancesWPF
                     m.FluentMappings.AddFromAssemblyOf<MovementMap>();
                 })
                 .BuildConfiguration();
+            cfg.SetProperty(NHibernate.Cfg.Environment.Hbm2ddlAuto, "update");
 
             var schemaExport = new SchemaExport(cfg);
             schemaExport.Create(false, true);

@@ -2,6 +2,8 @@
 using FinancesWPF.Entities;
 using FinancesWPF.Repositories;
 using Mapster;
+using System;
+using System.Collections.Generic;
 
 namespace FinancesWPF.Controllers
 {
@@ -19,6 +21,12 @@ namespace FinancesWPF.Controllers
             var category = dto.Adapt<Category>();
             var createdCategory = _categoryRepository.Create(category);
             return createdCategory.Adapt<ReadCategoryDTO>();
+        }
+
+        public List<ReadCategoryDTO> GetAll()
+        {
+            var list = _categoryRepository.GetAll();
+            return list.Adapt<List<ReadCategoryDTO>>();
         }
     }
 }

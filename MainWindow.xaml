@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinancesWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Finanças pessoais" Height="450" Width="800" Loaded="Window_Loaded"
+        WindowState="Maximized">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal" Background="DarkGray" VerticalAlignment="Top">
+            <Button Content="Movimentos" Margin="5" Background="Transparent" Foreground="White" Command="ApplicationCommands.Open" CommandParameter="Home"/>
+            <Button Content="Categorias" Margin="5" Background="Transparent" Foreground="White" Command="ApplicationCommands.Open" CommandParameter="Category"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Stretch">
+            <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Margin="0,30,0,0"/>
+        </StackPanel>
     </Grid>
 </Window>
